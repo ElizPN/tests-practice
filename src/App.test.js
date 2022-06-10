@@ -12,11 +12,14 @@ describe("Test App", () => {
     expect(btn).toBeInTheDocument();
     expect(input).toMatchSnapshot();
   });
-  test("renders learn react link", () => {
+  test("renders learn react link", async () => {
     render(<App />);
     // const helloWorld = screen.queryByText(/kjkjkk/i);
     // expect(helloWorld).toBeNull;
-    const helloWorld = screen.findByText(/data/i);
-    expect(helloWorld).toBeNull;
+    screen.debug();
+    const helloWorld = await screen.findByText(/data/i);
+    expect(helloWorld).toBeInTheDocument();
+    expect(helloWorld).toHaveStyle({ color: "red" });
+    screen.debug();
   });
 });

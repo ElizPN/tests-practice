@@ -7,12 +7,13 @@ function App() {
   useEffect(() => {
     setTimeout(() => {
       setData({});
-    }, 100);
+    }, 1000);
   }, []);
+  console.log(data);
 
   return (
     <div>
-      {data && <div> data</div>}
+      {data && <div style={{ color: "red" }}> data</div>}
       <h1> Hello world</h1>
       <button>click me</button>
       <input type='text' placeholder='input value......'></input>
