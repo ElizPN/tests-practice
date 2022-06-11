@@ -1,4 +1,5 @@
 import { render, screen, fireEvent } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 import App from "./App";
 
 describe("Test App", () => {
@@ -29,7 +30,8 @@ describe("Test App", () => {
   test("Click event", () => {
     render(<App />);
     const btn = screen.getByTestId("toggle-btn");
-    expect(screen.queryByTestId("toggle-elem")).toBeNull(); // get element directly in expect, otherwice you will get initial value null
+    // Get element directly in expect, otherwice you will get initial value null
+    expect(screen.queryByTestId("toggle-elem")).toBeNull();
     fireEvent.click(btn);
     expect(screen.queryByTestId("toggle-elem")).toBeInTheDocument();
     fireEvent.click(btn);
@@ -40,9 +42,12 @@ describe("Test App", () => {
     render(<App />);
     const input = screen.getByPlaceholderText(/input value/i);
     expect(screen.queryByTestId("value-elem")).toContainHTML("");
+    // Artificial event
     fireEvent.input(input, {
       target: { value: "123123" },
     });
+    // Same to real user's behaviour
+    userEvent.type(input, "123123");
     expect(screen.queryByTestId("value-elem")).toContainHTML("123123");
   });
 });
