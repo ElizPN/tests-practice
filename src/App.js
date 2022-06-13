@@ -1,4 +1,3 @@
-import logo from "./logo.svg";
 import "./App.css";
 import { useEffect, useState } from "react";
 
@@ -14,7 +13,6 @@ function App() {
       setData({});
     }, 1000);
   }, []);
-  console.log(data);
 
   return (
     <div>

@@ -1,5 +1,5 @@
-export const delay = (callback: any, ms: any) => {
-  const longRunningFunc = (resolve: (value: unknown) => void): void => {
+export const delay = (callback, ms) => {
+  const longRunningFunc = (resolve) => {
     const toDoAfterTimeOut = () => {
       resolve(callback());
     };
