@@ -2,10 +2,11 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 
 export const Users = () => {
-  const [users, setUsers] = useState([1, 2, 3]);
+  const [users, setUsers] = useState([]);
   const loadUsers = async () => {
     const resp = await axios.get("https://jsonplaceholder.typicode.com/users");
     setUsers(resp.data);
+    console.log(resp.data);
   };
 
   useEffect(() => {
